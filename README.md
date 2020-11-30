@@ -5,7 +5,7 @@ GameJam oirganised by ENSICAEN, December 220
 
 This project use pygame.
 
-In order to install pygame, type `pip3 install pygame`, in a linux terminal.
+In order to install pygame, type `pip install -r requirements.txt`, in a linux terminal.
 
 ## Credits
 
