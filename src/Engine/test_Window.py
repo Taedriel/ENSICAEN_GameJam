@@ -6,8 +6,7 @@ def test_start_Screen():
     screen = Window()
     screen.__start__()
 
-    assert screen.w["status"] == True
-    assert screen.w["ingame"] == False
+    assert screen.w["status"] == False
 
 def test_add_component():
 
