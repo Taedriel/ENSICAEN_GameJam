@@ -1,7 +1,26 @@
 import sys
-from .Window import Window
+from .window import Window
 
-screen = Window()
-screen.__start__()
 
-assert screen.w["status"] == True
+def test_start_Screen():
+    screen = Window()
+    screen.__start__()
+
+    assert screen.w["status"] == True
+    assert screen.w["ingame"] == False
+
+def test_add_component():
+
+    pass
+
+def test_remove_component():
+
+    pass
+
+def test_add_event():
+
+    pass
+
+def test_remove_event():
+
+    pass

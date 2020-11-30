@@ -24,24 +24,43 @@ class Window:
             Window.w["status"] = True
             Window.w["screen"] = pygame.display.set_mode(sizeW)
             Window.w["ingame"] = False
-            Window.w["components"] = {
+            Window.w["components"] = []
+            Window.w["events"] = {
                 "KEYDOWN": []
             }
-            Window.w["events"] = []
 
         else:
             # other time, it's just to get a reference of the actual window
             pass
 
     @staticmethod
-    def addComponent():
-        pass
+    def addComponent(comp):
+        Window.w["components"].add(comp)
+
+    @staticmethod
+    def removeComponent(comp):
+        if comp in Window.w["components"]:
+            Window.w["components"].remove(comp)
+        else:
+            raise AttributeError(comp.__str__())
+
+    @staticmethod
+    def addEventHandler(event):
+        Window.w["events"][event.type] = (event.key, event.function)
+
+    @staticmethod
+    def removeEventHandler(event):
+        if event in Window.w["event"][event.type]:
+            Window.w["components"].remove(event)
+        else:
+            raise AttributeError(event.__str__())
 
     @staticmethod
     def __start__():
 
         while Window.w["ingame"]:
 
+            #           Event 
             for event in pygame.event.get():
 
                 if event.type == pygame.QUIT:
@@ -52,9 +71,10 @@ class Window:
                     if event.unicode in Window.w["events"]["KEYDOWN"][0]:
                         Window.w["events"]["KEYDOWN"][1]()
 
+            #           Refresh
+            for elem in Window.w["components"]:
+                elem.draw(Window.w["screen"])
 
-                #     if event.unicode == 's':
-                #         print("S")
 
 
             # at the end of all event, refresh the screen. If you want to refresh earlier
