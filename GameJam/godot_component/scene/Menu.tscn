@@ -14,7 +14,7 @@ colors = PoolColorArray( 0.0705882, 0, 0.701961, 1, 0.0156863, 0, 0.180392, 1 )
 gradient = SubResource( 1 )
 width = 1024
 
-[node name="Node2D" type="Control"]
+[node name="Menu" type="Control"]
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
