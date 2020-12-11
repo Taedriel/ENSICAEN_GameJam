@@ -17,5 +17,7 @@ func _process(delta):
 		left = false
 		$AnimatedSprite.play("run")
 		position.x -= speed
+	elif Input.is_key_pressed(KEY_A):
+		$AnimatedSprite.play("under_attack")
 	else:
 		$AnimatedSprite.play("idle")
