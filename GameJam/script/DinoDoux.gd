@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 var left = true
 var speed = 20
