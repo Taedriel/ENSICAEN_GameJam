@@ -102,3 +102,6 @@ shape = SubResource( 1 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 14 )
 animation = "under_attack"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
