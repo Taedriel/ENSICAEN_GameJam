@@ -1,11 +1,5 @@
 # ENSICAEN_GameJam
-GameJam oirganised by ENSICAEN, December 220
-
-## How to install requirments
-
-This project use pygame.
-
-In order to install pygame, type `pip install -r requirements.txt`, in a linux terminal.
+GameJam oirganised by ENSICAEN, December 2020
 
 ## Credits
 
