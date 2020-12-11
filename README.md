@@ -1,5 +1,5 @@
 # ENSICAEN_GameJam
-GameJam oirganised by ENSICAEN, December 2020
+GameJam organised by ENSICAEN, December 2020
 
 ## Credits
 
