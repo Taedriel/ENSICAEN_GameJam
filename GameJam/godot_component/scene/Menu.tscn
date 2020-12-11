@@ -92,3 +92,4 @@ margin_top = 365.0
 margin_right = 600.0
 margin_bottom = 415.0
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
