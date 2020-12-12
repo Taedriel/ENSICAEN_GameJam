@@ -4,45 +4,55 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var buffer
+signal add_event(recap, obj)
+
+var buffer = []
+var dict
+var sens
 
 var oldposDep
-var delta
+var total_delta
 var oldAction
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("add_event", get_tree().get_root().get_child(0), "addEvent", [buffer])
+	connect("add_event", get_tree().get_root().get_child(0), "addEvent")
 	cleanBuffer()
 	
-func addBuffer(posDep, action, posArr):
-	
+func addBuffer(posDep, action, d):
 	#1st frame of a second
-	if delta == 0:
+	dict = {"posDep": oldposDep, "action":oldAction, "delta":total_delta}
+	
+	if total_delta == 0:
 		oldAction = action
 		oldposDep = posDep
-		
+	
 	if oldAction == action:
-		pass
+		total_delta += d
 	else:
-		var dict = {"posDep": oldposDep, "action":oldAction, "delta":delta}
 		buffer.append(dict)
 		
 		oldposDep = posDep
 		oldAction = action
+		total_delta = 0
 		
-		
-	
 func getBuffer():
 	return buffer
 	
+	
 func cleanBuffer():
+	print(dict)
+	if len(buffer) == 0:
+		buffer.append(dict)
+		
 	buffer = []
-	delta = 0
+	total_delta = 0
+	
+func _on_time_sens_changing(newsens):
+	sens = newsens
 	
 func _on_next_second(newSec):
-	var recap = getBuffer()
+	var toSend = getBuffer()
+	emit_signal("add_event", buffer, self)
 	cleanBuffer()
-	emit_signal("add_event", recap)
-	print("récap envoyé")

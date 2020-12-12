@@ -1,7 +1,5 @@
 extends "Mob.gd"
 
-signal add_event(obj, action)
-
 export (int) var speed = 500
 var key_pressed = false
 export (float) var GRAVITY = 20.0
@@ -20,10 +18,6 @@ var velocity = Vector2()
 var bullet = preload("res://godot_component/dynamic_obj/RockBullet.tscn")
 
 var cpt_att = 3
-
-
-func  _ready():
-	pass
 
 func get_input(delta):
 	cpt_att += delta
@@ -62,7 +56,7 @@ func get_input(delta):
 		else:
 			$AnimatedSprite.play("attack")
 		yield(get_tree().create_timer(0.5), "timeout")
-		fire()
+		fire(delta)
 	elif cpt_att < hit_delay:
 		key_pressed = true
 		if is_inv:
@@ -72,6 +66,7 @@ func get_input(delta):
 				
 				
 	else:
+		addBuffer(position, "idle", delta)
 		key_pressed = false
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
@@ -79,7 +74,7 @@ func get_input(delta):
 			$AnimatedSprite.play('idle')
 	velocity = velocity * speed
 
-func fire():
+func fire(delta):
 	addBuffer(position, "fire", delta)
 	var bullet_instance = bullet.instance()
 	if !left:
@@ -98,5 +93,7 @@ func fire():
 
 
 func _physics_process(delta):
-	get_input(delta)
+	if !sens:
+		get_input(delta)
+	
 	velocity = move_and_slide(velocity, UP)

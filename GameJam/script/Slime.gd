@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "Mob.gd"
 
 export (float) var GRAVITY = 20.0
 var velocity = Vector2()
@@ -32,18 +32,21 @@ func get_input(delta):
 	velocity.y += delta * GRAVITY
 	
 	if ran == 1 and cpt_jp < 2:
+		addBuffer(position, "right", delta)
 		cpt_jp += delta
 		velocity.x += hip_range * delta
 		$AnimatedSprite.flip_h = false
 		if on_air and cpt_jp < 0.5 :
 			velocity.y -= hip_size 
 	elif cpt_jp < 2 :
+		addBuffer(position, "left", delta)
 		cpt_jp += delta
 		velocity.x += -hip_range * delta
 		$AnimatedSprite.flip_h = true
 		if on_air and cpt_jp < 0.5 :
 			velocity.y -= hip_size 
 	else:
+		addBuffer(position, "idle", delta)
 		cpt_jp = 0
 		ran = randi()%2
 	velocity = velocity * speed
@@ -56,11 +59,11 @@ func _process(delta):
 
 func hit():
 	hp -= 10
-	
-
 
 func _physics_process(delta):
-	get_input(delta)
+	if !sens:
+		get_input(delta)
+		
 	cpt += delta
 	
 	velocity = move_and_slide(velocity, UP, false, 4, PI/4, false)
