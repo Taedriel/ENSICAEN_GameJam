@@ -15,4 +15,12 @@ func _ready():
 func _process(delta):
 	if $Switch.is_activate:
 		$Boxe.fallen = true
+		
+	if $Switch1.is_activate:
+		fade_out()
+		yield(get_tree().create_timer(0.5), "timeout")
+		get_tree().change_scene("res://godot_component/scene/Menu.tscn")
 	pass
+	
+func fade_out():
+	set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.3))
