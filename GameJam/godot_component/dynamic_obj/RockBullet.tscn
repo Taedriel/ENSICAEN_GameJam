@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://media/img/sprite/rock/182-Rock01.png" type="Texture" id=1]
+[ext_resource path="res://script/RockBullet.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -91,9 +92,12 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=18]
+radius = 8.0
 
 [node name="RockBullet" type="RigidBody2D"]
-mass = 100.0
+mass = 102.449
+gravity_scale = 12.38
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )

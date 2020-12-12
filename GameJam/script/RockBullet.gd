@@ -1,18 +1,9 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-var velocity = Vector2(1, 0)
-var speed = 200
+var cpt = 0
+export (int) var timer = 20
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-	
-func _physics_process(delta):
-	velocity.x += speed
-	move_and_collide(velocity)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	cpt += 1
+	if fmod(cpt, timer) == 0:
+		self.queue_free()
