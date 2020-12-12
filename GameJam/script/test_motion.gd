@@ -46,18 +46,18 @@ func get_input(delta):
 		GRAVITY = 100 
 	velocity.y += delta * GRAVITY
 	if Input.is_action_pressed('ui_right'):
-		sendAction(position, "right")
+#		sendAction(position, "right")
 		move_right()
 		left = false
 		velocity.x += 1
 	elif Input.is_action_pressed('ui_left'):
-		sendAction(position, "left")
+#		sendAction(position, "left")
 		move_left()
 		left = true
 		velocity.x -= 1
 		
 	elif Input.is_key_pressed(KEY_A) and cpt_att > hit_delay and velocity.x == 0:
-		sendAction(position, "fire")	
+#		sendAction(position, "fire")	
 		cpt_att = 0
 
 		if is_inv:
@@ -75,7 +75,7 @@ func get_input(delta):
 				
 				
 	else:
-		sendAction(position, "idle")
+#		sendAction(position, "idle")
 
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
