@@ -54,7 +54,7 @@ func get_input(delta):
 			$AnimatedSprite.play("inv_run")
 		else:
 			$AnimatedSprite.play("run")
-	if Input.is_key_pressed(KEY_A) and cpt_att > hit_delay:
+	if Input.is_key_pressed(KEY_A) and cpt_att > hit_delay and velocity.x == 0:
 		cpt_att = 0
 		key_pressed = true
 		if is_inv:

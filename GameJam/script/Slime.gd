@@ -24,8 +24,8 @@ func get_input(delta):
 		GRAVITY = 20
 	else:
 		GRAVITY = 100
-	if  :
-		velocity.x += 
+#	if  :
+#		velocity.x += 
 	velocity.y += delta * GRAVITY
 	velocity = velocity * speed
 	$AnimatedSprite.play("run")
