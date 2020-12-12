@@ -1,7 +1,6 @@
 extends "Mob.gd"
 
 export (int) var speed = 500
-var key_pressed = false
 export (float) var GRAVITY = 20.0
 const UP = Vector2(0, -1)
 
@@ -19,6 +18,21 @@ var bullet = preload("res://godot_component/dynamic_obj/RockBullet.tscn")
 
 var cpt_att = 3
 
+func move_right():
+	$AnimatedSprite.flip_h = false
+	if is_inv:
+		$AnimatedSprite.play("inv_run")
+	else:
+		$AnimatedSprite.play("run")
+
+
+func move_left():
+	$AnimatedSprite.flip_h = true
+	if is_inv:
+		$AnimatedSprite.play("inv_run")
+	else:
+		$AnimatedSprite.play("run")
+
 func get_input(delta):
 	cpt_att += delta
 	velocity = Vector2()
@@ -29,29 +43,20 @@ func get_input(delta):
 		GRAVITY = 100 
 	velocity.y += delta * GRAVITY
 	if Input.is_action_pressed('ui_right'):
-		sendAction(position, "move")
+		sendAction(position, "right")
+		move_right()
 		left = false
-		key_pressed = true
-		$AnimatedSprite.flip_h = false
-		if is_inv:
-			$AnimatedSprite.play("inv_run")
-		else:
-			$AnimatedSprite.play("run")
 		velocity.x += 1
 	elif Input.is_action_pressed('ui_left'):
-		sendAction(position, "move")
-		key_pressed = true
+		sendAction(position, "left")
+		move_left()
 		left = true
 		velocity.x -= 1
-		$AnimatedSprite.flip_h = true
-		if is_inv:
-			$AnimatedSprite.play("inv_run")
-		else:
-			$AnimatedSprite.play("run")
+		
 	elif Input.is_key_pressed(KEY_A) and cpt_att > hit_delay and velocity.x == 0:
 		sendAction(position, "fire")	
 		cpt_att = 0
-		key_pressed = true
+
 		if is_inv:
 			$AnimatedSprite.play("inv_attack")
 		else:
@@ -59,7 +64,7 @@ func get_input(delta):
 		yield(get_tree().create_timer(0.5), "timeout")
 		fire(delta)
 	elif cpt_att < hit_delay:
-		key_pressed = true
+
 		if is_inv:
 			$AnimatedSprite.play("inv_attack")
 		else:
@@ -68,7 +73,7 @@ func get_input(delta):
 				
 	else:
 		sendAction(position, "idle")
-		key_pressed = false
+
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
 		else:

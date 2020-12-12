@@ -37,11 +37,11 @@ func _process(delta):
 		emit_signal("next_second", int(time))
 		oldTime = int(time)
 	
-	if (time <= 0 or time > maxTime):
+	if (int(time*100) <= 0 or int(time*100) > (maxTime*100)):
 		game_over()
-	
-	if !sens:
-		recover_actions()
+	else:
+		if !sens:
+			recover_actions()
 
 func game_over():
 	print("gameOver")
@@ -51,14 +51,20 @@ func recover_actions():
 	var objArray = []
 	
 	for elem in timeArray[int(time * 100)]:
-		if elem[1]["action"] == "move":
-			elem[0].position = elem[1]["pos"]
+		match (elem[1]["action"]):
+			"right":
+				elem[0].position = elem[1]["pos"]
+				elem[0].move_right()
 			
-		elif elem[1]["action"] == "idle":
-			pass
+			"left":
+				elem[0].position = elem[1]["pos"]
+				elem[0].move_left()
+			
+			"idle":
+				pass
 				
-		elif elem[1]["action"] == "fire":
-			pass
+			"fire":
+				pass
 		
 # function that wil be call when node send signals
 func reverseTime(val):
