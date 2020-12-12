@@ -1,25 +1,22 @@
 extends Node2D
 
-var cible = null
-var inZone = false setget door
+var cible
 var dest = null
-var cpt = 0
+var inZone = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#on cherche dans les enfants
-	for child in get_children():
-		if child.has_method("door"):
+	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
+	$Area2D.connect("body_exited", self, "_on_Area2D_body_exited")
+	
+	for child in get_parent().get_children():
+		if child == self:
+			continue
+		else:
 			dest = child.get_global_position()
-			return
 			
-	#on cherche dans les parents
-	dest = get_parent().get_global_position()
-	return
-
-func door(_door):
-	return inZone
-
+	inZone = 0
+	cible = get_tree().get_nodes_in_group("player")[0]
 
 func _input(event):
 	if event.is_action_pressed('ui_select') and inZone and cible != null:
@@ -28,10 +25,8 @@ func _input(event):
 
 
 func _on_Area2D_body_entered(body):
-	cible = get_tree().get_nodes_in_group("player")[0]
 	inZone = true
 	
 
 func _on_Area2D_body_exited(body):
 	inZone = false
-	cible = null

@@ -1,26 +1,29 @@
 extends KinematicBody2D
 
+signal add_event(obj, action)
+
 export (int) var speed = 600
 var key_pressed = false
 export (float) var GRAVITY = 20.0
 const UP = Vector2(0, -1)
 
+var is_inv = false
 var left =  false
 
-export (bool) var is_inv = false
-
-export (int) var bullet_x = 30
-export (int) var bullet_y = 15
-
-export (int) var bullet_up_dir = 90
+var bullet_x = 30
+var bullet_y = 15
+var bullet_up_dir = 90
 
 var hit_delay = 1
-
 var bullet_speed = 1000
-var bullet = preload("res://godot_component/dynamic_obj/RockBullet.tscn")
 var velocity = Vector2()
+var bullet = preload("res://godot_component/dynamic_obj/RockBullet.tscn")
 
 var cpt_att = 3
+
+
+func  _ready():
+	connect("add_event", get_tree().get_root().get_child(0), "addEvent")
 
 func get_input(delta):
 	cpt_att += delta
@@ -32,6 +35,7 @@ func get_input(delta):
 		GRAVITY = 100 
 	velocity.y += delta * GRAVITY
 	if Input.is_action_pressed('ui_right'):
+		emit_signal("add_event", self.position, "right")
 		left = false
 		key_pressed = true
 		$AnimatedSprite.flip_h = false
@@ -41,6 +45,7 @@ func get_input(delta):
 			$AnimatedSprite.play("run")
 		velocity.x += 1
 	if Input.is_action_pressed('ui_left'):
+		emit_signal("add_event", self.position, "left")
 		key_pressed = true
 		left = true
 		velocity.x -= 1
@@ -75,6 +80,7 @@ func get_input(delta):
 	velocity = velocity * speed
 
 func fire():
+	emit_signal("add_event", self.position, "fire")
 	var bullet_instance = bullet.instance()
 	if !left:
 		bullet_instance.position = get_global_position()

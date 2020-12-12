@@ -5,6 +5,7 @@
 [ext_resource path="res://media/img/ressources_test/Base pack/Tiles/door_openTop.png" type="Texture" id=3]
 
 [node name="OpenDoor" type="Node2D"]
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
@@ -20,5 +21,3 @@ texture = ExtResource( 1 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( 0.353561, 0 )
 polygon = PoolVector2Array( -34.0542, 70.6221, 35.2579, 70.6221, 35.8191, -18.0524, -34.896, -17.7718 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
