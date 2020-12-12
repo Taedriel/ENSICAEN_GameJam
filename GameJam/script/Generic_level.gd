@@ -25,7 +25,8 @@ func _ready():
 			self.connect("sens_time", node, "_on_time_sens_changing")
 	
 	timeArray = []
-	for i in range(maxTime+1):
+	# one case per frame per maxTime seconde
+	for i in range(maxTime * 100 + 1):
 		timeArray.append([])
 	
 func _process(delta):
@@ -40,37 +41,30 @@ func _process(delta):
 		game_over()
 	
 	if !sens:
-		recover_actions(delta)
+		recover_actions()
 
 func game_over():
 	print("gameOver")
 	get_tree().change_scene("res://godot_component/scene/GameOver.tscn")
 
-func recover_actions(delta):
+func recover_actions():
 	var objArray = []
 	
-	for elem in timeArray[int(time)]:
-		if elem[1]["action"] == "idle":
+	for elem in timeArray[int(time * 100)]:
+		if elem[1]["action"] == "move":
+			elem[0].position = elem[1]["pos"]
+			
+		elif elem[1]["action"] == "idle":
 			pass
-		elif elem[1]["action"] == "right":
-			elem[0].velocity.x -= 1
-			if not(elem[0] in objArray):
-				objArray.append(elem[0])
-		elif elem[1]["action"] == "left":
-			elem[0].velocity.x += 1
-			if not(elem[0] in objArray):
-				objArray.append(elem[0])
-	
-	for obj in objArray:
-		print(obj.name)
-		obj.velocity = obj.move_and_slide(obj.velocity, UP)
+				
+		elif elem[1]["action"] == "fire":
+			pass
 		
 # function that wil be call when node send signals
 func reverseTime(val):
 	if val:
 		print("Time reverse !")
 		sens = false
-		
 	else :
 		print("Time normal !")
 		sens = true
@@ -79,6 +73,4 @@ func addEvent(recap, obj):
 #	print(int(time))
 	if len(recap) != 0:
 #		print(obj.name, ": ")
-		for action in recap:
-#			print(action)
-			timeArray[time].append([obj, action])
+		timeArray[int(time*100)].append([obj, recap])

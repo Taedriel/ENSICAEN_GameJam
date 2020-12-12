@@ -32,21 +32,21 @@ func get_input(delta):
 	velocity.y += delta * GRAVITY
 	
 	if ran == 1 and cpt_jp < 2:
-		addBuffer(position, "right", delta)
+		sendAction(position, "move")
 		cpt_jp += delta
 		velocity.x += hip_range * delta
 		$AnimatedSprite.flip_h = false
 		if on_air and cpt_jp < 0.5 :
 			velocity.y -= hip_size 
 	elif cpt_jp < 2 :
-		addBuffer(position, "left", delta)
+		sendAction(position, "move")
 		cpt_jp += delta
 		velocity.x += -hip_range * delta
 		$AnimatedSprite.flip_h = true
 		if on_air and cpt_jp < 0.5 :
 			velocity.y -= hip_size 
 	else:
-		addBuffer(position, "idle", delta)
+		sendAction(position, "idle")
 		cpt_jp = 0
 		ran = randi()%2
 	velocity = velocity * speed

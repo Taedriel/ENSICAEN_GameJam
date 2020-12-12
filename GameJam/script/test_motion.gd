@@ -29,7 +29,7 @@ func get_input(delta):
 		GRAVITY = 100 
 	velocity.y += delta * GRAVITY
 	if Input.is_action_pressed('ui_right'):
-		addBuffer(position, "right", delta)
+		sendAction(position, "move")
 		left = false
 		key_pressed = true
 		$AnimatedSprite.flip_h = false
@@ -39,7 +39,7 @@ func get_input(delta):
 			$AnimatedSprite.play("run")
 		velocity.x += 1
 	elif Input.is_action_pressed('ui_left'):
-		addBuffer(position, "left", delta)
+		sendAction(position, "move")
 		key_pressed = true
 		left = true
 		velocity.x -= 1
@@ -49,6 +49,7 @@ func get_input(delta):
 		else:
 			$AnimatedSprite.play("run")
 	elif Input.is_key_pressed(KEY_A) and cpt_att > hit_delay and velocity.x == 0:
+		sendAction(position, "fire")	
 		cpt_att = 0
 		key_pressed = true
 		if is_inv:
@@ -66,7 +67,7 @@ func get_input(delta):
 				
 				
 	else:
-		addBuffer(position, "idle", delta)
+		sendAction(position, "idle")
 		key_pressed = false
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
@@ -75,7 +76,6 @@ func get_input(delta):
 	velocity = velocity * speed
 
 func fire(delta):
-	addBuffer(position, "fire", delta)
 	var bullet_instance = bullet.instance()
 	if !left:
 		bullet_instance.position = get_global_position()
