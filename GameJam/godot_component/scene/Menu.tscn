@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://godot_component/button/NewGameButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://projet_logo.png" type="Texture" id=2]
 [ext_resource path="res://godot_component/button/ContinueButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://godot_component/button/ExitButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://godot_component/button/OptionButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://script/MenuButton.gd" type="Script" id=6]
-[ext_resource path="res://godot_component/custom_font/font.tres" type="DynamicFont" id=7]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0705882, 0, 0.701961, 1, 0.0156863, 0, 0.180392, 1 )
@@ -45,29 +44,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="title" type="HBoxContainer" parent="menu"]
-margin_right = 1024.0
-margin_bottom = 64.0
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="menu/title"]
-margin_left = 386.0
-margin_right = 450.0
-margin_bottom = 64.0
-texture = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="menu/title"]
-margin_left = 454.0
-margin_top = 11.0
-margin_right = 638.0
-margin_bottom = 52.0
-custom_fonts/font = ExtResource( 7 )
-text = "Inversed"
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="menu"]
-margin_top = 68.0
 margin_right = 1024.0
-margin_bottom = 668.0
+margin_bottom = 600.0
 rect_min_size = Vector2( 1024, 600 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu/HBoxContainer2"]
@@ -95,6 +74,10 @@ margin_bottom = 355.0
 margin_top = 365.0
 margin_right = 600.0
 margin_bottom = 415.0
+
+[node name="projet_logo" type="Sprite" parent="."]
+position = Vector2( 640, 184 )
+texture = ExtResource( 2 )
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
