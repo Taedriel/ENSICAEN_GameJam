@@ -67,12 +67,12 @@ func recover_actions():
 			"fire":
 				pass
 				
-			"swap":
-				var newplayer = load("res://godot_component/dynamic_obj/DinoDoux.tscn").instance()
-				add_child(newplayer)
-				for node in newplayer.get_children():
-					if node is Camera2D:
-						node.current = true
+#			"swap":
+#				var newplayer = load("res://godot_component/dynamic_obj/DinoDoux.tscn").instance()
+#				add_child(newplayer)
+#				for node in newplayer.get_children():
+#					if node is Camera2D:
+#						node.current = true
 		
 # function that wil be call when node send signals
 func reverseTime(val):

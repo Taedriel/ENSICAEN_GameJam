@@ -18,8 +18,16 @@ var hp = max_hp
 var cible = null
 var inZone = false
 
-var ran = randi()%2
+var action = randi()%2
 var on_air = false
+
+func move_right():
+	$AnimatedSprite.flip_h = true
+	$AnimatedSprite.play("run")
+
+func move_left():
+	$AnimatedSprite.flip_h = false
+	$AnimatedSprite.play("run")
 
 func get_input(delta):
 	velocity = Vector2()
@@ -31,26 +39,25 @@ func get_input(delta):
 
 	velocity.y += delta * GRAVITY
 	
-	if ran == 1 and cpt_jp < 2:
-		sendAction(position, "move")
+	if action == 1 and cpt_jp < 2:
+		sendAction(position, "left")
+		move_left()
 		cpt_jp += delta
 		velocity.x += hip_range * delta
-		$AnimatedSprite.flip_h = false
 		if on_air and cpt_jp < 0.5 :
 			velocity.y -= hip_size 
 	elif cpt_jp < 2 :
-		sendAction(position, "move")
+		sendAction(position, "right")
+		move_right()
 		cpt_jp += delta
 		velocity.x += -hip_range * delta
-		$AnimatedSprite.flip_h = true
 		if on_air and cpt_jp < 0.5 :
 			velocity.y -= hip_size 
 	else:
 		sendAction(position, "idle")
 		cpt_jp = 0
-		ran = randi()%2
+		action = randi()%2
 	velocity = velocity * speed
-	$AnimatedSprite.play("run")
 
 
 func _process(delta):
