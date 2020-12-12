@@ -3,12 +3,11 @@
 [ext_resource path="res://godot_component/custom_font/font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://script/UI.gd" type="Script" id=2]
 
-[node name="Control" type="Control"]
-anchor_top = 0.002
+[node name="Control" type="Control" groups=[
+"master_ui",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -0.077533
-margin_bottom = 1.12244
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
