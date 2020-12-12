@@ -8,6 +8,8 @@ const UP = Vector2(0, -1)
 var A_pressed = false
 var left =  false
 
+export (bool) var is_inv = false
+
 export (int) var bullet_x = 30
 export (int) var bullet_y = 15
 
@@ -29,18 +31,27 @@ func get_input(delta):
 		left = false
 		key_pressed = true
 		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("run")
+		if is_inv:
+			$AnimatedSprite.play("inv_run")
+		else:
+			$AnimatedSprite.play("run")
 		velocity.x += 1
 	if Input.is_action_pressed('ui_left'):
 		key_pressed = true
 		left = true
 		velocity.x -= 1
 		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("run")
+		if is_inv:
+			$AnimatedSprite.play("inv_run")
+		else:
+			$AnimatedSprite.play("run")
 	if Input.is_key_pressed(KEY_A) and not A_pressed:
 		key_pressed = true
 		A_pressed = true
-		$AnimatedSprite.play("attack")
+		if is_inv:
+			$AnimatedSprite.play("inv_attack")
+		else:
+			$AnimatedSprite.play("attack")
 		yield(get_tree().create_timer(0.5), "timeout")
 		fire()
 	elif Input.is_key_pressed(KEY_A) and A_pressed:
@@ -48,7 +59,10 @@ func get_input(delta):
 	else:
 		A_pressed = false
 	if key_pressed == false:
-		$AnimatedSprite.play('idle')
+		if is_inv:
+			$AnimatedSprite.play('inv_idle')
+		else:
+			$AnimatedSprite.play('idle')
 	velocity = velocity * speed
 
 func fire():

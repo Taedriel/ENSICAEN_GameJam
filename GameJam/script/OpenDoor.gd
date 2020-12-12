@@ -25,6 +25,7 @@ func _input(event):
 	if event.is_action_pressed('ui_select') and inZone and cible != null:
 		cible.position.x = dest.x
 		cible.position.y = dest.y
+		cible.is_inv = !cible.is_inv
 
 
 func _on_Area2D_body_entered(body):
