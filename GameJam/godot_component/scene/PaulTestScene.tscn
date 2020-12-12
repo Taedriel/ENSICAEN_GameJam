@@ -15,14 +15,6 @@ bullet_up_dir = 400
 
 [node name="Slime" parent="." instance=ExtResource( 3 )]
 position = Vector2( 432, 352 )
-GRAVITY = null
-speed = null
-hip_size = 15245
-max_hp = null
 
 [node name="Slime2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1128, 328 )
-GRAVITY = null
-speed = null
-hip_size = 15245
-max_hp = null

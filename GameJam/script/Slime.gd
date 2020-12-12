@@ -6,10 +6,11 @@ export (int) var speed = 600
 const UP = Vector2(0, -1)
 var tmp_vec = Vector2()
 
-export (int) var hip_size = 200
-var hip_range = 5
+var hip_size = 1.6
+var hip_range = 1
 
 var cpt = 0
+var cpt_jp = 0
 
 export (int) var max_hp = 30
 var hp = max_hp
@@ -17,16 +18,34 @@ var hp = max_hp
 var cible = null
 var inZone = false
 
+var ran = randi()%2
+var on_air = false
 
 func get_input(delta):
 	velocity = Vector2()
 	if is_on_floor():
+		on_air = !on_air
 		GRAVITY = 20
 	else:
 		GRAVITY = 100
-#	if  :
-#		velocity.x += 
+
 	velocity.y += delta * GRAVITY
+	
+	if ran == 1 and cpt_jp < 2:
+		cpt_jp += delta
+		velocity.x += hip_range * delta
+		$AnimatedSprite.flip_h = false
+		if on_air and cpt_jp < 0.5 :
+			velocity.y -= hip_size 
+	elif cpt_jp < 2 :
+		cpt_jp += delta
+		velocity.x += -hip_range * delta
+		$AnimatedSprite.flip_h = true
+		if on_air and cpt_jp < 0.5 :
+			velocity.y -= hip_size 
+	else:
+		cpt_jp = 0
+		ran = randi()%2
 	velocity = velocity * speed
 	$AnimatedSprite.play("run")
 

@@ -3,7 +3,8 @@ extends Node
 signal next_second(newTime)
 
 var sens = true
-export (int) var time = 300
+export (int) var maxTime = 300
+var time = maxTime
 var timeArray
 
 
@@ -19,8 +20,15 @@ func _ready():
 	
 func _process(delta):
 	time -= (1 if sens else -1) * delta
-	emit_signal("next_second", int(time))
 	
+	if (time <= 0 or time > maxTime):
+		game_over()
+	
+	emit_signal("next_second", int(time))
+
+func game_over():
+	get_tree().change_scene("res://godot_component/scene/GameOver.tscn")
+
 	
 # function that wil be call when node send signals
 func reverseTime(val):
