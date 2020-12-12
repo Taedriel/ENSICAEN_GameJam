@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://godot_component/custom_font/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://script/UI.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.855
+anchor_top = 0.048
+anchor_right = 0.977
+anchor_bottom = 0.128
+margin_left = 0.47998
+margin_top = 0.199999
+margin_right = -0.448059
+margin_bottom = 0.199997
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PanelContainer" groups=[
+"chrono",
+]]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 117.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 1 )
+text = "300"
+align = 1
