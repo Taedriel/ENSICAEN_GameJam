@@ -13,10 +13,10 @@ func _input(event):
 		cible.is_inv = !cible.is_inv
 		emit_signal("reverse_time", cible.is_inv)
 
-func _on_Area2D_body_entered(body):
-	cible = body
+func _on_Area2D_body_entered(_body):
+	cible = get_tree().get_nodes_in_group("player")[0]
 	inZone = true
 	
-func _on_Area2D_body_exited(body):
+func _on_Area2D_body_exited(_body):
 	inZone = false
 	cible = null
