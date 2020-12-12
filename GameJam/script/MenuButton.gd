@@ -22,3 +22,7 @@ func _on_NewGameButton_pressed():
 
 func _on_ExitButton_pressed():
 	get_tree().quit()
+
+
+func _on_ContinueButton_pressed():
+	get_tree().change_scene("res://godot_component/scene/Selector.tscn")
