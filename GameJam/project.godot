@@ -31,6 +31,10 @@ ui_home={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_2=false
+
 [rendering]
 
 quality/driver/fallback_to_gles2=true
