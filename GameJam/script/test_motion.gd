@@ -81,9 +81,6 @@ func fire():
 		bullet_instance.apply_central_impulse(Vector2(-bullet_speed,bullet_up_dir))
 	get_tree().get_root().call_deferred("add_child",bullet_instance)
 
-func kill():
-	get_tree().reload_current_scene()
-
 
 func _physics_process(delta):
 	get_input(delta)
