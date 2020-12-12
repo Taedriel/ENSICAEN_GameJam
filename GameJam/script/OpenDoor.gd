@@ -28,7 +28,7 @@ func _input(event):
 
 
 func _on_Area2D_body_entered(body):
-	cible = body
+	cible = get_tree().get_nodes_in_group("player")[0]
 	inZone = true
 	
 
