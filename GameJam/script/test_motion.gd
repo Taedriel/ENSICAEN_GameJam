@@ -1,11 +1,10 @@
 extends KinematicBody2D
 
 export (int) var speed = 600
-export (bool) var key_pressed = false
+var key_pressed = false
 export (float) var GRAVITY = 20.0
 const UP = Vector2(0, -1)
 
-var A_pressed = false
 var left =  false
 
 export (bool) var is_inv = false
@@ -15,11 +14,16 @@ export (int) var bullet_y = 15
 
 export (int) var bullet_up_dir = 90
 
+var hit_delay = 1
+
 var bullet_speed = 1000
 var bullet = preload("res://godot_component/dynamic_obj/RockBullet.tscn")
 var velocity = Vector2()
 
+var cpt_att = 3
+
 func get_input(delta):
+	cpt_att += delta
 	velocity = Vector2()
 	key_pressed = false
 	if is_on_floor():
@@ -45,19 +49,24 @@ func get_input(delta):
 			$AnimatedSprite.play("inv_run")
 		else:
 			$AnimatedSprite.play("run")
-	if Input.is_key_pressed(KEY_A) and not A_pressed:
+	if Input.is_key_pressed(KEY_A) and cpt_att > hit_delay:
+		cpt_att = 0
 		key_pressed = true
-		A_pressed = true
 		if is_inv:
 			$AnimatedSprite.play("inv_attack")
 		else:
 			$AnimatedSprite.play("attack")
 		yield(get_tree().create_timer(0.5), "timeout")
 		fire()
-	elif Input.is_key_pressed(KEY_A) and A_pressed:
-		key_pressed = true
 	else:
-		A_pressed = false
+		if cpt_att < hit_delay:
+			key_pressed = true
+			if is_inv:
+				$AnimatedSprite.play("inv_attack")
+			else:
+				$AnimatedSprite.play("attack")
+				
+				
 	if key_pressed == false:
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
