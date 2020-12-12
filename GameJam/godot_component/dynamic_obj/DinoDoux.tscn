@@ -103,4 +103,5 @@ frames = SubResource( 14 )
 animation = "under_attack"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1.5874, -150.803 )
 current = true

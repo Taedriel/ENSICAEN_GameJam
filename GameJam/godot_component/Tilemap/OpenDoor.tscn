@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://media/img/ressources_test/Base pack/Tiles/door_openMid.png" type="Texture" id=1]
+[ext_resource path="res://media/img/ressources_test/Base pack/Tiles/door_openTop.png" type="Texture" id=2]
+
+[node name="OpenDoor" type="Node2D"]
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0.347397, -34.4873 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.314865, 35.4015 )
+texture = ExtResource( 1 )
