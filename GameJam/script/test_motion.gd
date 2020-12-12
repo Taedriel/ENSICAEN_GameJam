@@ -33,6 +33,9 @@ func move_left():
 	else:
 		$AnimatedSprite.play("run")
 
+func swap():
+	is_inv = !is_inv
+
 func get_input(delta):
 	cpt_att += delta
 	velocity = Vector2()

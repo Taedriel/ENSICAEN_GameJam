@@ -32,6 +32,7 @@ func _ready():
 func _process(delta):
 	var s = (1 if sens else -1)
 	time -= s * delta
+#	print(int(time * 100))
 	
 	if oldTime - (1 * s) == int(time):
 		emit_signal("next_second", int(time))
@@ -49,7 +50,7 @@ func game_over():
 
 func recover_actions():
 	var objArray = []
-	
+	time -= 0.01
 	for elem in timeArray[int(time * 100)]:
 		match (elem[1]["action"]):
 			"right":
@@ -65,6 +66,13 @@ func recover_actions():
 				
 			"fire":
 				pass
+				
+			"swap":
+				var newplayer = load("res://godot_component/dynamic_obj/DinoDoux.tscn").instance()
+				add_child(newplayer)
+				for node in newplayer.get_children():
+					if node is Camera2D:
+						node.current = true
 		
 # function that wil be call when node send signals
 func reverseTime(val):
@@ -78,5 +86,5 @@ func reverseTime(val):
 func addEvent(recap, obj):
 #	print(int(time))
 	if len(recap) != 0:
-#		print(obj.name, ": ")
+#		print(obj.name, ": ", recap["action"])
 		timeArray[int(time*100)].append([obj, recap])

@@ -10,7 +10,8 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed('ui_select') and inZone and cible != null:
-		cible.is_inv = !cible.is_inv
+		cible.swap()
+		cible.sendAction(cible.position, "swap")
 		emit_signal("reverse_time", cible.is_inv)
 
 func _on_Area2D_body_entered(_body):
