@@ -27,7 +27,6 @@ func _process(delta):
 		self.queue_free()
 
 func hit():
-	print(hp)
 	hp -= 10
 
 func _physics_process(delta):
