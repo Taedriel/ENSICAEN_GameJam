@@ -94,7 +94,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=18]
 radius = 8.0
 
-[node name="RockBullet" type="RigidBody2D"]
+[node name="RockBullet" type="RigidBody2D" groups=[
+"bullet",
+]]
 mass = 102.449
 gravity_scale = 12.38
 script = ExtResource( 2 )
