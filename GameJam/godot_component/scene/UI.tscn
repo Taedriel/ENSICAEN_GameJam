@@ -4,8 +4,14 @@
 [ext_resource path="res://script/UI.gd" type="Script" id=2]
 
 [node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.402
+anchor_top = 0.54
+anchor_right = 0.588
+anchor_bottom = 0.647
+margin_left = -411.648
+margin_top = -324.0
+margin_right = 421.888
+margin_bottom = 211.8
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
