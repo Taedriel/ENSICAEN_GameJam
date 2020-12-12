@@ -93,6 +93,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=18]
 
 [node name="RockBullet" type="RigidBody2D"]
+mass = 100.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
