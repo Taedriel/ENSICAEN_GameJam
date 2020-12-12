@@ -1,30 +1,35 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-func _process(delta):
-	manage_inputs()
+export (int) var speed = 600
+var key_pressed = false
+export (float) var GRAVITY = 20.0
+const UP = Vector2(0, -1)
 
-func manage_inputs():
-	var moving = false
-	if Input.is_action_just_pressed("ui_up"):
-		if linear_velocity.y == 0:
-			jump()
-	if Input.is_action_pressed("ui_right"):
-		move("right")
-		moving = true
-	if Input.is_action_pressed("ui_left"):
-		move("left")
-		moving = true
-	if !moving:
-		vel_linear.x = 0
+var velocity = Vector2()
 
-func jump():
-	apply_central_impulse(Vector2(0, -1000))
+func get_input(delta):
+	velocity = Vector2()
+	key_pressed = false
+	if is_on_floor():
+		GRAVITY = 20
+	else:
+		GRAVITY = 100 
+	velocity.y += delta * GRAVITY
+	if Input.is_action_pressed('ui_right'):
+		key_pressed = true
+		$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play("run")
+		velocity.x += 1
+	if Input.is_action_pressed('ui_left'):
+		key_pressed = true
+		velocity.x -= 1
+		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play("run")
 
-func move(direction):
-	if direction == "right":
-		vel_linear.x = 400
-	if direction == "left":
-		vel_linear.x = -400
+	if key_pressed == false:
+		$AnimatedSprite.play('idle')
+	velocity = velocity * speed
 
-func _integrate_forces(state):
-	state.linear_velocity.x = vel_linear.x
+func _physics_process(delta):
+	get_input(delta)
+	velocity = move_and_slide(velocity, UP)
