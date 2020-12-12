@@ -7,8 +7,8 @@ const UP = Vector2(0, -1)
 
 var cpt = 0
 
-export (int) var hp = 30
-var curr_hp = hp
+export (int) var max_hp = 30
+var hp = max_hp
 
 
 func get_input(delta):
