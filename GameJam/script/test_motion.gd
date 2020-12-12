@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends "Mob.gd"
 
 signal add_event(obj, action)
 
-export (int) var speed = 600
+export (int) var speed = 500
 var key_pressed = false
 export (float) var GRAVITY = 20.0
 const UP = Vector2(0, -1)
@@ -23,19 +23,19 @@ var cpt_att = 3
 
 
 func  _ready():
-	connect("add_event", get_tree().get_root().get_child(0), "addEvent")
+	pass
 
 func get_input(delta):
 	cpt_att += delta
 	velocity = Vector2()
-	key_pressed = false
+
 	if is_on_floor():
 		GRAVITY = 20
 	else:
 		GRAVITY = 100 
 	velocity.y += delta * GRAVITY
 	if Input.is_action_pressed('ui_right'):
-		emit_signal("add_event", self.position, "right")
+		addBuffer(position, "right", delta)
 		left = false
 		key_pressed = true
 		$AnimatedSprite.flip_h = false
@@ -44,8 +44,8 @@ func get_input(delta):
 		else:
 			$AnimatedSprite.play("run")
 		velocity.x += 1
-	if Input.is_action_pressed('ui_left'):
-		emit_signal("add_event", self.position, "left")
+	elif Input.is_action_pressed('ui_left'):
+		addBuffer(position, "left", delta)
 		key_pressed = true
 		left = true
 		velocity.x -= 1
@@ -54,7 +54,7 @@ func get_input(delta):
 			$AnimatedSprite.play("inv_run")
 		else:
 			$AnimatedSprite.play("run")
-	if Input.is_key_pressed(KEY_A) and cpt_att > hit_delay and velocity.x == 0:
+	elif Input.is_key_pressed(KEY_A) and cpt_att > hit_delay and velocity.x == 0:
 		cpt_att = 0
 		key_pressed = true
 		if is_inv:
@@ -63,16 +63,16 @@ func get_input(delta):
 			$AnimatedSprite.play("attack")
 		yield(get_tree().create_timer(0.5), "timeout")
 		fire()
+	elif cpt_att < hit_delay:
+		key_pressed = true
+		if is_inv:
+			$AnimatedSprite.play("inv_attack")
+		else:
+			$AnimatedSprite.play("attack")
+				
+				
 	else:
-		if cpt_att < hit_delay:
-			key_pressed = true
-			if is_inv:
-				$AnimatedSprite.play("inv_attack")
-			else:
-				$AnimatedSprite.play("attack")
-				
-				
-	if key_pressed == false:
+		key_pressed = false
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
 		else:
@@ -80,7 +80,7 @@ func get_input(delta):
 	velocity = velocity * speed
 
 func fire():
-	emit_signal("add_event", self.position, "fire")
+		addBuffer(position, "fire", delta)
 	var bullet_instance = bullet.instance()
 	if !left:
 		bullet_instance.position = get_global_position()
