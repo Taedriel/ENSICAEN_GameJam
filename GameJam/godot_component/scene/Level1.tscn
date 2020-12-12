@@ -1,16 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://godot_component/button/BackMenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://godot_component/dynamic_obj/DinoDoux.tscn" type="PackedScene" id=1]
+[ext_resource path="res://godot_component/Tilemap/terrain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://godot_component/static_obj/Sign.tscn" type="PackedScene" id=3]
+[ext_resource path="res://godot_component/static_obj/OpenDoor.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
+tile_data = PoolIntArray( 5, 2, 0, 6, 2, 0, 7, 2, 0, 8, 6, 0, 65541, 17, 0, 65542, 17, 0, 65543, 17, 0, 65544, 13, 0, 65547, 3, 0, 131077, 17, 0, 131078, 17, 0, 131079, 17, 0, 131080, 13, 0, 196613, 17, 0, 196614, 17, 0, 196615, 17, 0, 196616, 13, 0, 262149, 17, 0, 262150, 17, 0, 262151, 17, 0, 262152, 9, 0, 262153, 2, 0, 262154, 2, 0, 262155, 2, 0, 262156, 2, 0, 262157, 2, 0, 262158, 2, 0, 262159, 2, 0, 262160, 2, 0, 262161, 2, 0, 262162, 2, 0, 262163, 6, 0, 262169, 7, 0, 262170, 2, 0, 262171, 2, 0, 327685, 17, 0, 327686, 17, 0, 327687, 17, 0, 327688, 17, 0, 327689, 17, 0, 327690, 17, 0, 327691, 17, 0, 327692, 17, 0, 327693, 17, 0, 327694, 17, 0, 327695, 17, 0, 327696, 17, 0, 327697, 17, 0, 327698, 17, 0, 327699, 13, 0, 327705, 12, 0, 327706, 17, 0, 327707, 17, 0, 393221, 17, 0, 393222, 17, 0, 393223, 17, 0, 393224, 17, 0, 393225, 17, 0, 393226, 17, 0, 393227, 17, 0, 393228, 17, 0, 393229, 17, 0, 393230, 17, 0, 393231, 17, 0, 393232, 17, 0, 393233, 17, 0, 393234, 17, 0, 393235, 13, 0, 393241, 12, 0, 393242, 17, 0, 393243, 17, 0, 458757, 17, 0, 458758, 17, 0, 458759, 17, 0, 458760, 17, 0, 458761, 17, 0, 458762, 17, 0, 458763, 17, 0, 458764, 17, 0, 458765, 17, 0, 458766, 17, 0, 458767, 17, 0, 458768, 17, 0, 458769, 17, 0, 458770, 17, 0, 458771, 13, 0, 458777, 12, 0, 458778, 17, 0, 458779, 17, 0, 524293, 17, 0, 524294, 17, 0, 524295, 17, 0, 524296, 17, 0, 524297, 17, 0, 524298, 17, 0, 524299, 17, 0, 524300, 17, 0, 524301, 17, 0, 524302, 17, 0, 524303, 17, 0, 524304, 17, 0, 524305, 17, 0, 524306, 17, 0, 524307, 9, 0, 524308, 2, 0, 524309, 2, 0, 524310, 2, 0, 524311, 2, 0, 524312, 2, 0, 524313, 10, 0, 524314, 17, 0, 524315, 17, 0, 589839, 17, 0, 589840, 17, 0, 589841, 17, 0, 589842, 17, 0, 589843, 17, 0, 589844, 17, 0, 589845, 17, 0, 589846, 17, 0, 589847, 17, 0, 589848, 17, 0, 589849, 17, 0, 589850, 17, 0, 589851, 17, 0, 655375, 17, 0, 655376, 17, 0, 655377, 17, 0, 655378, 17, 0, 655379, 17, 0, 655380, 17, 0, 655381, 17, 0, 655382, 17, 0, 655383, 17, 0, 655384, 17, 0, 655385, 17, 0, 655386, 17, 0, 655387, 17, 0 )
 
-[node name="BackMenuButton" parent="CenterContainer" instance=ExtResource( 1 )]
-margin_right = 600.0
-margin_bottom = 50.0
+[node name="Sign" parent="TileMap" instance=ExtResource( 3 )]
+position = Vector2( 1144, 72 )
+is_left = false
+
+[node name="Node2D" type="Node2D" parent="TileMap"]
+
+[node name="SRC" parent="TileMap/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 2240, 728 )
+
+[node name="DEST" parent="TileMap/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 2624, 328 )
+
+[node name="DinoDoux" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1152, 16 )
