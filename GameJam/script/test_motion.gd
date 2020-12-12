@@ -80,7 +80,7 @@ func get_input(delta):
 	velocity = velocity * speed
 
 func fire():
-		addBuffer(position, "fire", delta)
+	addBuffer(position, "fire", delta)
 	var bullet_instance = bullet.instance()
 	if !left:
 		bullet_instance.position = get_global_position()
