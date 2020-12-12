@@ -76,7 +76,7 @@ margin_right = 600.0
 margin_bottom = 415.0
 
 [node name="projet_logo" type="Sprite" parent="."]
-position = Vector2( 640, 184 )
+position = Vector2( 636.194, 182.127 )
 texture = ExtResource( 2 )
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
