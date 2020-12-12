@@ -214,6 +214,7 @@ animations = [ {
 [node name="DinoDoux" type="KinematicBody2D" groups=[
 "player",
 ]]
+z_index = 20
 input_pickable = true
 script = ExtResource( 2 )
 

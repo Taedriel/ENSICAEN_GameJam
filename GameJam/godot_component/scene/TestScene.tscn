@@ -21,9 +21,7 @@ tile_data = PoolIntArray( -524271, 12, 0, -524270, 17, 0, -524269, 17, 0, -52426
 [node name="Swapper" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1587.93, -164.585 )
 
-[node name="DinoDoux" parent="." groups=[
-"player",
-] instance=ExtResource( 2 )]
+[node name="DinoDoux" parent="." instance=ExtResource( 2 )]
 position = Vector2( 610.375, 264.128 )
 
 [node name="Control" parent="DinoDoux" instance=ExtResource( 4 )]
