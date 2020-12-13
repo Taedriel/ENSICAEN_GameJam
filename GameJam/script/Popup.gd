@@ -24,7 +24,6 @@ func _on_Popup_about_to_hide():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		print("popup !")
 		var rect = get_parent().get_global_position()
 #		var rect = Vector2()
 		rect.x -= 150
@@ -38,6 +37,5 @@ func _on_Area2D_body_entered(body):
 		
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("player"):
-		print("popup fermeture")
 		hide()
 		emit_signal("popup_hide")

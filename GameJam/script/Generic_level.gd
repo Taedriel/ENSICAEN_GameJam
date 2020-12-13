@@ -47,8 +47,6 @@ func _init():
 	time = int(0.75 * time)
 	oldTime = time - 1
 	
-	print("INIT: ", time)
-	
 func _process(delta):
 	var s = (1 if sens else -1)
 	time -= s * delta
@@ -65,7 +63,6 @@ func _process(delta):
 			recover_actions()
 
 func game_over():
-	print("gameOver")
 	get_tree().change_scene("res://godot_component/scene/GameOver.tscn")
 
 func recover_actions():
@@ -88,19 +85,16 @@ func recover_actions():
 # function that wil be call when node send signals
 func reverseTime(val):
 	if val:
-		print("Time reverse !")
 		sens = !sens
 		time += 0.01
 		emit_signal("time_change", sens)
 	else :
-		print("Time normal !")
 		sens = !sens
 		time -= 0.01
 		emit_signal("time_change", sens)
 		
 func addEvent(recap, obj):
 	if len(recap) != 0:
-#		print(obj.name, ": ", recap["action"])
 		timeArray[int(time*100)].append([obj, recap])
 
 
