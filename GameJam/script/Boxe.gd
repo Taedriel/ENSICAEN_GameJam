@@ -2,7 +2,7 @@ extends "Mob.gd"
 
 var speed = 200
 export (bool) var fallen = false
-
+var hasBeenDone = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +18,13 @@ func lock():
 	
 func unlock():
 	fallen = true
+
+
+func _on_trigger(val):
+	if val and !hasBeenDone:
+		event()
+	hasBeenDone = true
+	
+func event():
+	pass
+	

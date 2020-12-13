@@ -232,5 +232,5 @@ frames = SubResource( 34 )
 animation = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1.5874, -150.803 )
+position = Vector2( -0.0943933, -67.2297 )
 current = true

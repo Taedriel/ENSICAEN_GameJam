@@ -4,28 +4,40 @@ extends Popup
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var growing = false
+var maxsize = Vector2(0.8, 0.8)
 
-var maxsize = Vector2(1, 1)
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	rect_scale = Vector2(0,0)
-	pass
+#	rect_scale = Vector2(0,0)
+	connect("about_to_show", self, "_on_Popup_about_to_show")
+	connect("popup_hide", self, "_on_Popup_about_to_hide")
+	visible = true
 
+func _on_Popup_about_to_show():
+	var tween = get_node("Tween")
+	tween.interpolate_property(self, "modulate:a", 0.0, 1.0, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	
+func _on_Popup_about_to_hide():
+	var tween = get_node("Tween")
+	tween.interpolate_property(self, "modulate:a", 1.0, 0.0, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 
-func grow(delta, maxsize):
-	if maxsize.x > rect_scale.x:
-		rect_scale.x += maxsize.x * delta
-	if maxsize.y > rect_scale.y:
-		rect_scale.y += maxsize.y * delta
-	if maxsize.y/2 <= rect_scale.y and maxsize.x/2 <= rect_scale.x :
-		popup()
-		
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		growing = true
-	
-func _process(delta):
-	if growing:
-		grow(delta, maxsize)
+		print("popup !")
+		var rect = get_parent().get_global_position()
+#		var rect = Vector2()
+		rect.x -= 150
+		rect.y -= 300
+		rect_position = rect
+		set_as_toplevel(true)
+		var r = Rect2(rect, rect_size)
+		
+		popup()
+		show()
+		
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("player"):
+		print("popup fermeture")
+		hide()
+		emit_signal("popup_hide")
