@@ -88,18 +88,17 @@ func recover_actions():
 # function that wil be call when node send signals
 func reverseTime(val):
 	if val:
-		print("=============================Time reverse !")
+		print("Time reverse !")
 		sens = !sens
 		time += 0.01
 		emit_signal("time_change", sens)
 	else :
-		print("==============================Time normal !")
+		print("Time normal !")
 		sens = !sens
 		time -= 0.01
 		emit_signal("time_change", sens)
 		
 func addEvent(recap, obj):
-#	print(int(time))
 	if len(recap) != 0:
 #		print(obj.name, ": ", recap["action"])
 		timeArray[int(time*100)].append([obj, recap])

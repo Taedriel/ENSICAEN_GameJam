@@ -7,5 +7,4 @@ func _ready():
 	box.lock()
 
 func event():
-	print("Event !", self.position)
 	box.unlock()

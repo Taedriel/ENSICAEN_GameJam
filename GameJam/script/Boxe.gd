@@ -9,7 +9,6 @@ func _ready():
 	add_to_group("box")
 
 func _physics_process(delta):
-	print("Csens: ", Csens)
 	if Csens:
 		if fallen:
 			sendAction(position, "down")
