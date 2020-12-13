@@ -142,6 +142,8 @@ position = Vector2( 3842.2, 325.069 )
 script = ExtResource( 12 )
 
 [node name="Boxe" parent="trigger/Node2D" instance=ExtResource( 7 )]
+position = Vector2( 0.749023, 0 )
+scale = Vector2( 1.35, 1.35 )
 
 [node name="Slime2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3253.01, 673.607 )
