@@ -1,5 +1,5 @@
 
-extends "fade_out.gd"
+extends "Generic_level.gd"
 
 
 # Declare member variables here. Examples:
@@ -19,4 +19,3 @@ func _process(delta):
 		
 	if $Switch1.is_activate:
 		fade_out("change_scene", "res://godot_component/scene/Menu.tscn")
-	pass
