@@ -29,7 +29,7 @@ func move_left():
 	$AnimatedSprite.flip_h = false
 	$AnimatedSprite.play("run")
 	
-func idk():
+func idle():
 	$AnimatedSprite.play("run")
 
 func get_input(delta):
@@ -58,6 +58,7 @@ func get_input(delta):
 #			velocity.y -= hip_size 
 	else:
 		sendAction(position, "idle")
+		idle()
 		cpt_jp = 0
 		action = randi()%3
 	velocity = velocity * speed
@@ -71,7 +72,7 @@ func hit():
 	hp -= 10
 
 func _physics_process(delta):
-	if !sens:
+	if Csens:
 		get_input(delta)
 		
 	cpt += delta

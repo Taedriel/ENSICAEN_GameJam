@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_NewGameButton_pressed():
-	get_tree().change_scene("res://godot_component/scene/TestScene.tscn")
+	get_tree().change_scene("res://godot_component/scene/Level1.tscn")
 
 
 func _on_ExitButton_pressed():
