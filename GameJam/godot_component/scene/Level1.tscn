@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://godot_component/dynamic_obj/DinoDoux.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot_component/Tilemap/terrain.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://godot_component/static_obj/Swapper.tscn" type="PackedScene" id=9]
 [ext_resource path="res://godot_component/dynamic_obj/Slime.tscn" type="PackedScene" id=10]
 [ext_resource path="res://godot_component/static_obj/trigger.tscn" type="PackedScene" id=11]
+[ext_resource path="res://script/EventSpawnBox.gd" type="Script" id=12]
+[ext_resource path="res://godot_component/scene/UI.tscn" type="PackedScene" id=13]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -11.9866, 62.9289 )
@@ -54,7 +56,7 @@ position = Vector2( 1997.43, 764.395 )
 text = "Blabla"
 
 [node name="Boxe" parent="TileMap" instance=ExtResource( 7 )]
-position = Vector2( 1360.47, 164.049 )
+position = Vector2( 1347.76, 150.276 )
 
 [node name="Slime" parent="TileMap" instance=ExtResource( 10 )]
 position = Vector2( 3142.68, 768.239 )
@@ -74,9 +76,15 @@ position = Vector2( 8.98975, 94.3933 )
 [node name="Area2D" parent="TileMap/Node2D2" instance=ExtResource( 11 )]
 position = Vector2( 3568.3, 479.691 )
 
-[node name="Boxe2" parent="TileMap/Node2D2" instance=ExtResource( 7 )]
-position = Vector2( 3851.11, -114.384 )
-scale = Vector2( 1.2, 1.2 )
+[node name="Node2D" type="Node2D" parent="TileMap/Node2D2"]
+position = Vector2( 3839.49, -67.8056 )
+script = ExtResource( 12 )
 
 [node name="DinoDoux" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1147.92, 173 )
+position = Vector2( 1152.16, 43.7455 )
+
+[node name="Control" parent="DinoDoux" instance=ExtResource( 13 )]
+margin_left = -1152.16
+margin_top = -43.7455
+margin_right = -1152.16
+margin_bottom = -43.7455

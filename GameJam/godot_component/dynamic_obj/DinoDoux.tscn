@@ -5,8 +5,8 @@
 [ext_resource path="res://media/sound/03_Childhood_Memories.ogg" type="AudioStream" id=3]
 [ext_resource path="res://media/img/sprite/dinoCharacters/sheets/DinoSprites - mort.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 12 )
+[sub_resource type="CircleShape2D" id=35]
+radius = 12.5482
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -224,7 +224,7 @@ autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 2, 2 )
-shape = SubResource( 1 )
+shape = SubResource( 35 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
