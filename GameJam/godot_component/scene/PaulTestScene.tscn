@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://godot_component/dynamic_obj/DinoDoux.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot_component/Tilemap/terrain.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://godot_component/static_obj/InfoPanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://godot_component/static_obj/Spike.tscn" type="PackedScene" id=10]
 [ext_resource path="res://godot_component/dynamic_obj/BlackMage.tscn" type="PackedScene" id=11]
+[ext_resource path="res://godot_component/parallax/ParallaxBackground.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -51,5 +52,7 @@ Blabla oohhh"
 [node name="Spike" parent="." instance=ExtResource( 10 )]
 position = Vector2( 48, 240 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 11 )]
-position = Vector2( 712, 408 )
+[node name="BlackMage" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1112, 304 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 12 )]
