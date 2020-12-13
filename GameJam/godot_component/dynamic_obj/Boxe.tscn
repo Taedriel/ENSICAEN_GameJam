@@ -7,7 +7,7 @@
 extents = Vector2( 35, 35 )
 
 [node name="Boxe" type="KinematicBody2D"]
-scale = Vector2( 1.35, 1.35 )
+scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
