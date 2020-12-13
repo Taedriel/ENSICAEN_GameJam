@@ -6,7 +6,7 @@ extends Popup
 # var b = "text"
 var growing = false
 
-export (Vector2) var maxsize = Vector2(1, 1)
+var maxsize = Vector2(1, 1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
