@@ -26,3 +26,7 @@ func _on_ExitButton_pressed():
 
 func _on_ContinueButton_pressed():
 	get_tree().change_scene("res://godot_component/scene/Selector.tscn")
+
+
+func _on_OptionButton_pressed():
+	get_tree().change_scene("res://godot_component/scene/OptionMenu.tscn")
