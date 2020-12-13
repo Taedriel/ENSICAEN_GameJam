@@ -17,7 +17,6 @@ func _ready():
 
 
 func _input(event):
-	print(in_zone)
 	if event.is_action_pressed('ui_select') and in_zone:
 		is_activate = !is_activate
 		fmontant = true

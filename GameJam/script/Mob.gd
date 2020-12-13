@@ -39,7 +39,6 @@ func sendAction(pos, action):
 		emit_signal("add_event", buffer, self)
 
 func _on_time_change(newsens):
-	print("NewSENS: ", newsens)
 	Csens = !Csens
 		
 func _on_next_second(newSec):

@@ -22,8 +22,6 @@ func _process(delta):
 		position.x -= speed		
 	elif Input.is_key_pressed(KEY_A):
 		$AnimatedSprite.play("under_attack")
-	elif Input.is_action_just_pressed("ui_up"):
-		apply_central_impulse(Vector2(0, -1000))
 	else:
 		$AnimatedSprite.play("idle")
 		
