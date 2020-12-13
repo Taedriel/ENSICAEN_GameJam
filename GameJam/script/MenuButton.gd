@@ -29,4 +29,5 @@ func _on_ContinueButton_pressed():
 
 
 func _on_OptionButton_pressed():
+	print("la")
 	get_tree().change_scene("res://godot_component/scene/OptionMenu.tscn")
