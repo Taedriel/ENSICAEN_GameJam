@@ -5,10 +5,12 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 signal add_event(recap, obj)
+signal add_ressources(name, ref)
 
 var buffer = []
 var dict
-var sens = false
+var sens = true
+var ref
 
 func move_left():
 	pass
@@ -28,16 +30,25 @@ func idle():
 func fire():
 	pass
 
+func lock():
+	pass
+	
+func unlock():
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("add_event", get_tree().get_root().get_child(0), "addEvent")
+	connect("add_ressources", get_tree().get_root().get_child(0), "addRessources")
+
 	
 func sendAction(pos, action):
-	buffer = {"pos": pos, "action":action}
-	emit_signal("add_event", buffer, self)
+	if sens:
+		buffer = {"pos": pos, "action":action}
+		emit_signal("add_event", buffer, self)
 
 func _on_time_change(newsens):
+	print("NewSENS", newsens)
 	sens = newsens
 		
 func _on_next_second(newSec):

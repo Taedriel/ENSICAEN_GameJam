@@ -5,8 +5,9 @@
 [ext_resource path="res://media/sound/03_Childhood_Memories.ogg" type="AudioStream" id=3]
 [ext_resource path="res://media/img/sprite/dinoCharacters/sheets/DinoSprites - mort.png" type="Texture" id=4]
 
-[sub_resource type="CircleShape2D" id=35]
-radius = 12.5482
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.7759
+height = 8.49614
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -21,57 +22,57 @@ region = Rect2( 24, 0, 24, 24 )
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 408, 0, 24, 24 )
+region = Rect2( 240, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 432, 0, 24, 24 )
+region = Rect2( 264, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 456, 0, 24, 24 )
+region = Rect2( 288, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 480, 0, 24, 24 )
+region = Rect2( 312, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 504, 0, 24, 24 )
+region = Rect2( 408, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 528, 0, 24, 24 )
+region = Rect2( 432, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 552, 0, 24, 24 )
+region = Rect2( 456, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 24, 24 )
+region = Rect2( 480, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 264, 0, 24, 24 )
+region = Rect2( 504, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 288, 0, 24, 24 )
+region = Rect2( 528, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 312, 0, 24, 24 )
+region = Rect2( 552, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
@@ -175,14 +176,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "inv_run",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "inv_attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "inv_run",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
@@ -224,7 +225,7 @@ autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 2, 2 )
-shape = SubResource( 35 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )

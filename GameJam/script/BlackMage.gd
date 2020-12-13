@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var cpt = 0
-export (bool) run_left = false
+export (bool) var run_left = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

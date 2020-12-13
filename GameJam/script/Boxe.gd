@@ -4,27 +4,19 @@ var speed = 200
 export (bool) var fallen = false
 var hasBeenDone = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	._ready()
 
 func _physics_process(delta):
-	if fallen:
-		sendAction(position, "down")
-		move_and_collide(speed * delta * Vector2(0, 1), false)
+	if sens:
+		if fallen:
+			sendAction(position, "down")
+			move_and_collide(speed * delta * Vector2(0, 1), false)
 
 func lock():
+	sendAction(position, "lock")
 	fallen = false
 	
 func unlock():
+	sendAction(position, "unlock")
 	fallen = true
-
-
-func _on_trigger(val):
-	if val and !hasBeenDone:
-		event()
-	hasBeenDone = true
-	
-func event():
-	pass
-	

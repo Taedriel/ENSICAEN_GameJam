@@ -81,7 +81,7 @@ position = Vector2( 636.194, 182.127 )
 texture = ExtResource( 2 )
 
 [node name="logoed" type="Sprite" parent="."]
-position = Vector2( 856, 464 )
+position = Vector2( 894.704, 481.369 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 7 )
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]

@@ -7,9 +7,11 @@ const UP = Vector2(0, -1)
 
 var sens = true
 export (int) var maxTime = 300
-var time = maxTime
+var time = int(0.75 * maxTime)
 var oldTime = maxTime
 var timeArray
+
+var ressources
 
 func fade_out(action, cible):
 	set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.3))
@@ -20,6 +22,7 @@ func fade_out(action, cible):
 
 func _ready():
 	#connect all the node to the signal we will send
+	add_to_group("levelManager")
 	for node in get_tree().get_nodes_in_group("player")[0].get_children():
 		if node is Control:
 			self.connect("next_second", node, "_on_next_second")
@@ -28,11 +31,18 @@ func _ready():
 		if node is KinematicBody2D:
 			self.connect("next_second", node, "_on_next_second")
 			self.connect("time_change", node, "_on_time_change")
-	
+
+func _init():	
+	ressources = {}
 	timeArray = []
 	# one case per frame per maxTime seconde
 	for i in range(maxTime * 100 + 1):
 		timeArray.append([])
+	
+	time = int(0.75 * time)
+	oldTime = time - 1
+	
+	print(time)
 	
 func _process(delta):
 	var s = (1 if sens else -1)
@@ -57,6 +67,7 @@ func recover_actions():
 	for elem in timeArray[int(time * 100)]:
 		if elem[0] != null:
 			elem[0].position = elem[1]["pos"]
+
 			match (elem[1]["action"]):
 				"right":
 					elem[0].move_right()
@@ -68,32 +79,32 @@ func recover_actions():
 					elem[0].move_up()
 				"idle":
 					elem[0].idle()
-					
 				"fire":
 					pass
-					
-	#			"swap":
-	#				var newplayer = load("res://godot_component/dynamic_obj/DinoDoux.tscn").instance()
-	#				add_child(newplayer)
-	#				for node in newplayer.get_children():
-	#					if node is Camera2D:
-	#						node.current = true
+				"lock":
+					elem[0].lock()
+				"unlock":
+					elem[0].unlock()
 		
 # function that wil be call when node send signals
 func reverseTime(val):
 	if val:
-		print("Time reverse !")
-		sens = false
+		print("=============================Time reverse !")
+		sens = !sens
 		time += 0.01
-		emit_signal("time_change", false)
+		emit_signal("time_change", sens)
 	else :
-		print("Time normal !")
-		sens = true
+		print("==============================Time normal !")
+		sens = !sens
 		time -= 0.01
-		emit_signal("time_change", true)
+		emit_signal("time_change", sens)
 		
 func addEvent(recap, obj):
 #	print(int(time))
 	if len(recap) != 0:
 #		print(obj.name, ": ", recap["action"])
 		timeArray[int(time*100)].append([obj, recap])
+
+
+func addRessources(name, res):
+	ressources[name] = res

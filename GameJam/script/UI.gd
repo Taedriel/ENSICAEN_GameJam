@@ -13,4 +13,5 @@ func _process(delta):
 
 	
 func _on_next_second(newSec):
+	print(newSec)
 	get_tree().get_nodes_in_group("chrono")[0].text = str(newSec)
