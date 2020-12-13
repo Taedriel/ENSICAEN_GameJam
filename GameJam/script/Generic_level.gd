@@ -27,10 +27,15 @@ func _ready():
 		if node is Control:
 			self.connect("next_second", node, "_on_next_second")
 		
-	for node in get_tree().get_root().get_child(0).get_children():
-		if node is KinematicBody2D:
+	for node in get_tree().get_root().get_child(0).get_children(): 
+		if node.has_method("_on_time_change"):
 			self.connect("next_second", node, "_on_next_second")
 			self.connect("time_change", node, "_on_time_change")
+	
+	for node in get_tree().get_nodes_in_group("box"):
+		self.connect("time_change", node, "_on_time_change")
+		
+
 
 func _init():	
 	ressources = {}
@@ -42,7 +47,7 @@ func _init():
 	time = int(0.75 * time)
 	oldTime = time - 1
 	
-	print(time)
+	print("INIT: ", time)
 	
 func _process(delta):
 	var s = (1 if sens else -1)
@@ -79,12 +84,6 @@ func recover_actions():
 					elem[0].move_up()
 				"idle":
 					elem[0].idle()
-				"fire":
-					pass
-				"lock":
-					elem[0].lock()
-				"unlock":
-					elem[0].unlock()
 		
 # function that wil be call when node send signals
 func reverseTime(val):

@@ -9,7 +9,7 @@ signal add_ressources(name, ref)
 
 var buffer = []
 var dict
-var sens = true
+var Csens = true
 var ref
 
 func move_left():
@@ -26,15 +26,6 @@ func move_up():
 	
 func idle():
 	pass
-	
-func fire():
-	pass
-
-func lock():
-	pass
-	
-func unlock():
-	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,13 +34,13 @@ func _ready():
 
 	
 func sendAction(pos, action):
-	if sens:
+	if Csens:
 		buffer = {"pos": pos, "action":action}
 		emit_signal("add_event", buffer, self)
 
 func _on_time_change(newsens):
-	print("NewSENS", newsens)
-	sens = newsens
+	print("NewSENS: ", newsens)
+	Csens = !Csens
 		
 func _on_next_second(newSec):
 	pass

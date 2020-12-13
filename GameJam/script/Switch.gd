@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var is_activate = false
 export (bool) var left = true
+export (bool) var finish = false
 var in_zone = false
 var fmontant
 
@@ -24,6 +25,9 @@ func _input(event):
 		if is_activate and fmontant: 
 			$AudioStreamPlayer2D.play()
 			fmontant = false
+			
+		if finish:
+			get_tree().change_scene("res://godot_component/scene/Selector.tscn")
 		
 			
 func _on_Area2D_body_entered(body):

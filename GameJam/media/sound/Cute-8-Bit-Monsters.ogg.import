@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cute-8-Bit-Monsters.ogg-9af210b6d268782674d3b4b580428c83.oggstr"
+
+[deps]
+
+source_file="res://media/sound/Cute-8-Bit-Monsters.ogg"
+dest_files=[ "res://.import/Cute-8-Bit-Monsters.ogg-9af210b6d268782674d3b4b580428c83.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
