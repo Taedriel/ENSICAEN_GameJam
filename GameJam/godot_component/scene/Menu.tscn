@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://godot_component/button/NewGameButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://projet_logo.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://godot_component/button/OptionButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://script/MenuButton.gd" type="Script" id=6]
 [ext_resource path="res://media/img/logo/logoed.png" type="Texture" id=7]
+[ext_resource path="res://media/sound/Zelda Twilight Princess - Title Theme Acapella.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0705882, 0, 0.701961, 1, 0.0156863, 0, 0.180392, 1 )
@@ -84,6 +85,11 @@ texture = ExtResource( 2 )
 position = Vector2( 894.704, 481.369 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -30.0
+autoplay = true
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="menu/HBoxContainer2/VBoxContainer/OptionButton" to="." method="_on_OptionButton_pressed"]
