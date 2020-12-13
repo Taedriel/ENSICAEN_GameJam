@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://media/img/sprite/parallax_maison.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+follow_viewport_enable = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+scale = Vector2( 2, 2 )
+motion_mirroring = Vector2( 1280, 1218 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 256, 272 )
+texture = ExtResource( 1 )
