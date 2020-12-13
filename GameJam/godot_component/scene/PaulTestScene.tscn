@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://godot_component/dynamic_obj/DinoDoux.tscn" type="PackedScene" id=1]
 [ext_resource path="res://godot_component/Tilemap/terrain.tscn" type="PackedScene" id=2]
@@ -10,12 +10,20 @@
 [ext_resource path="res://godot_component/static_obj/Sign.tscn" type="PackedScene" id=8]
 [ext_resource path="res://godot_component/static_obj/InfoPanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://godot_component/static_obj/Spike.tscn" type="PackedScene" id=10]
+[ext_resource path="res://godot_component/dynamic_obj/BlackMage.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="ExitPanel" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1408, 168 )
+
+[node name="Switch" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1544, 176 )
+left = false
+
+[node name="Switch1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 624, 472 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 131073, 0, 0, 131074, 4, 0, 131084, -1073741820, 0, 131085, -1610612724, 0, 131086, -1610612724, 0, 131087, -1610612724, 0, 131088, -1610612724, 0, 131089, -1610612724, 0, 196610, 9, 0, 196611, 4, 0, 196619, -1073741820, 0, 196620, -1073741815, 0, 262146, 8, 0, 262147, 9, 0, 262148, 4, 0, 262154, -1073741820, 0, 262155, -1073741815, 0, 262156, -1073741816, 0, 327682, 8, 0, 327683, 8, 0, 327684, 9, 0, 327685, 2, 0, 327686, 2, 0, 327687, 2, 0, 327688, 2, 0, 327689, 2, 0, 327690, -1073741815, 0, 327691, -1073741816, 0, 327692, -1073741816, 0 )
@@ -42,3 +50,6 @@ Blabla oohhh"
 
 [node name="Spike" parent="." instance=ExtResource( 10 )]
 position = Vector2( 48, 240 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 11 )]
+position = Vector2( 712, 408 )
