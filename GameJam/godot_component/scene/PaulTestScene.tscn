@@ -51,5 +51,5 @@ Blabla oohhh"
 [node name="Spike" parent="." instance=ExtResource( 10 )]
 position = Vector2( 48, 240 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 11 )]
-position = Vector2( 712, 408 )
+[node name="BlackMage" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1112, 304 )
