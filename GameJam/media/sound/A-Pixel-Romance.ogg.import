@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A-Pixel-Romance.ogg-71232faabfc7aee008d89f666f307f24.oggstr"
+
+[deps]
+
+source_file="res://media/sound/A-Pixel-Romance.ogg"
+dest_files=[ "res://.import/A-Pixel-Romance.ogg-71232faabfc7aee008d89f666f307f24.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

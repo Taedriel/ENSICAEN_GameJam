@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Caffeine-Crazed-Coin-Op-Kids.ogg-d2feb4f4f2097d1d25d03885ca0e11dd.oggstr"
+
+[deps]
+
+source_file="res://media/sound/Caffeine-Crazed-Coin-Op-Kids.ogg"
+dest_files=[ "res://.import/Caffeine-Crazed-Coin-Op-Kids.ogg-d2feb4f4f2097d1d25d03885ca0e11dd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
