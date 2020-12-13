@@ -2,23 +2,34 @@ extends StaticBody2D
 
 var is_activate = false
 export (bool) var left = true
-var inZone = false
+var in_zone = false
+var fmontant
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
+	$Area2D.connect("body_exited", self, "_on_Area2D_body_exited")
+	
 	$Sprite.flip_h = !left
+	in_zone = false
+	$AudioStreamPlayer2D.stream.loop = false
 
 
 func _input(event):
-	
-	if event.is_action_pressed('ui_select') and inZone:
+	print(in_zone)
+	if event.is_action_pressed('ui_select') and in_zone:
 		is_activate = !is_activate
+		fmontant = true
 		$Sprite.flip_h = !$Sprite.flip_h
-		$AudioStreamPlayer2D.play()
-
-
+		if is_activate and fmontant: 
+			$AudioStreamPlayer2D.play()
+			fmontant = false
+		
+			
 func _on_Area2D_body_entered(body):
-	inZone = true
+	if body.is_in_group("player"):
+		in_zone = true
 
 func _on_Area2D_body_exited(body):
-	inZone = false
+	if body.is_in_group("player"):
+		in_zone = false
