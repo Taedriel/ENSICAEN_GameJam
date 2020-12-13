@@ -65,25 +65,21 @@ func get_input(delta):
 		else:
 			$AnimatedSprite.play("attack")
 		yield(get_tree().create_timer(0.5), "timeout")
-		fire(delta)
+		fire_bullet()
 	elif cpt_att < hit_delay:
-
 		if is_inv:
 			$AnimatedSprite.play("inv_attack")
 		else:
 			$AnimatedSprite.play("attack")
-				
-				
 	else:
 #		sendAction(position, "idle")
-
 		if is_inv:
 			$AnimatedSprite.play('inv_idle')
 		else:
 			$AnimatedSprite.play('idle')
 	velocity = velocity * speed
 
-func fire(delta):
+func fire_bullet():
 	var bullet_instance = bullet.instance()
 	if !left:
 		bullet_instance.position = get_global_position()
@@ -101,7 +97,7 @@ func fire(delta):
 
 
 func _physics_process(delta):
-	if !sens:
-		get_input(delta)
+#	if !sens:
+	get_input(delta)
 	
 	velocity = move_and_slide(velocity, UP)

@@ -6,43 +6,43 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 240, 0, 120, 120 )
+region = Rect2( 0, 0, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 360, 0, 120, 120 )
+region = Rect2( 120, 0, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 480, 0, 120, 120 )
+region = Rect2( 240, 0, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 120, 120 )
+region = Rect2( 240, 0, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 120, 0, 120, 120 )
+region = Rect2( 360, 0, 120, 120 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 240, 0, 120, 120 )
+region = Rect2( 480, 0, 120, 120 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
-"name": "run",
+"name": "spawn",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "spawn",
+"name": "run",
 "speed": 5.0
 } ]
 

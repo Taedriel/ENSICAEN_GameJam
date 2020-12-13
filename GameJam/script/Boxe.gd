@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "Mob.gd"
 
 var speed = 200
 export (bool) var fallen = false
@@ -10,4 +10,11 @@ func _ready():
 
 func _physics_process(delta):
 	if fallen:
+		sendAction(position, "down")
 		move_and_collide(speed * delta * Vector2(0, 1), false)
+
+func lock():
+	fallen = false
+	
+func unlock():
+	fallen = true

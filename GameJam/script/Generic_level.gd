@@ -1,7 +1,7 @@
 extends Node
 
 signal next_second(newTime)
-signal sens_time(val)
+signal time_change(val)
 
 const UP = Vector2(0, -1)
 
@@ -22,7 +22,7 @@ func _ready():
 	for node in get_tree().get_root().get_child(0).get_children():
 		if node is KinematicBody2D:
 			self.connect("next_second", node, "_on_next_second")
-			self.connect("sens_time", node, "_on_time_sens_changing")
+			self.connect("time_change", node, "_on_time_change")
 	
 	timeArray = []
 	# one case per frame per maxTime seconde
@@ -49,39 +49,43 @@ func game_over():
 	get_tree().change_scene("res://godot_component/scene/GameOver.tscn")
 
 func recover_actions():
-	var objArray = []
-	time -= 0.01
 	for elem in timeArray[int(time * 100)]:
-		match (elem[1]["action"]):
-			"right":
-				elem[0].position = elem[1]["pos"]
-				elem[0].move_right()
-			
-			"left":
-				elem[0].position = elem[1]["pos"]
-				elem[0].move_left()
-			
-			"idle":
-				pass
-				
-			"fire":
-				pass
-				
-#			"swap":
-#				var newplayer = load("res://godot_component/dynamic_obj/DinoDoux.tscn").instance()
-#				add_child(newplayer)
-#				for node in newplayer.get_children():
-#					if node is Camera2D:
-#						node.current = true
+		if elem[0] != null:
+			elem[0].position = elem[1]["pos"]
+			match (elem[1]["action"]):
+				"right":
+					elem[0].move_right()
+				"left":
+					elem[0].move_left()
+				"down":
+					elem[0].move_down()
+				"up":
+					elem[0].move_up()
+				"idle":
+					elem[0].idle()
+					
+				"fire":
+					pass
+					
+	#			"swap":
+	#				var newplayer = load("res://godot_component/dynamic_obj/DinoDoux.tscn").instance()
+	#				add_child(newplayer)
+	#				for node in newplayer.get_children():
+	#					if node is Camera2D:
+	#						node.current = true
 		
 # function that wil be call when node send signals
 func reverseTime(val):
 	if val:
 		print("Time reverse !")
 		sens = false
+		time += 0.01
+		emit_signal("time_change", false)
 	else :
 		print("Time normal !")
 		sens = true
+		time -= 0.01
+		emit_signal("time_change", true)
 		
 func addEvent(recap, obj):
 #	print(int(time))

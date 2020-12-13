@@ -28,6 +28,9 @@ func move_right():
 func move_left():
 	$AnimatedSprite.flip_h = false
 	$AnimatedSprite.play("run")
+	
+func idk():
+	$AnimatedSprite.play("run")
 
 func get_input(delta):
 	velocity = Vector2()
@@ -44,19 +47,19 @@ func get_input(delta):
 		move_left()
 		cpt_jp += delta
 		velocity.x += hip_range * delta
-		if on_air and cpt_jp < 0.5 :
-			velocity.y -= hip_size 
-	elif cpt_jp < 2 :
+#		if on_air and cpt_jp < 0.5 :
+#			velocity.y -= hip_size 
+	elif action == 0 and cpt_jp < 2:
 		sendAction(position, "right")
 		move_right()
 		cpt_jp += delta
 		velocity.x += -hip_range * delta
-		if on_air and cpt_jp < 0.5 :
-			velocity.y -= hip_size 
+#		if on_air and cpt_jp < 0.5 :
+#			velocity.y -= hip_size 
 	else:
 		sendAction(position, "idle")
 		cpt_jp = 0
-		action = randi()%2
+		action = randi()%3
 	velocity = velocity * speed
 
 

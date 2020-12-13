@@ -8,7 +8,25 @@ signal add_event(recap, obj)
 
 var buffer = []
 var dict
-var sens
+var sens = false
+
+func move_left():
+	pass
+	
+func move_right():
+	pass
+	
+func move_down():
+	pass
+	
+func move_up():
+	pass
+	
+func idle():
+	pass
+	
+func fire():
+	pass
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +37,7 @@ func sendAction(pos, action):
 	buffer = {"pos": pos, "action":action}
 	emit_signal("add_event", buffer, self)
 
-func _on_time_sens_changing(newsens):
+func _on_time_change(newsens):
 	sens = newsens
 		
 func _on_next_second(newSec):
