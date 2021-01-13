@@ -1,0 +1,6 @@
+Godot Engine v3.2.3.stable.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: GeForce MX130/PCIe/SSE2
+ 
+**ERROR**: Condition "default_certs != __null" is true.
+   At: modules/mbedtls/crypto_mbedtls.cpp:201:load_default_certificates() - Condition "default_certs != __null" is true.
+Editing project: /home/lemairp/Documents/1_Cours/2_1A_ENSICAEN/g_GAMEJAM_ENSICAEN/1_reel/ENSICAEN_GameJam/GameJam (::home::lemairp::Documents::1_Cours::2_1A_ENSICAEN::g_GAMEJAM_ENSICAEN::1_reel::ENSICAEN_GameJam::GameJam)
