@@ -6,7 +6,8 @@ var cible = null
 var inZone = false
 
 func _ready():
-	connect("reverse_time", get_tree().get_root().get_child(0), "reverseTime")
+	# La variable c'est juste pour enlever un warning
+	var _warn = connect("reverse_time", get_tree().get_root().get_child(0), "reverseTime")
 
 func _input(event):
 	if event.is_action_pressed('ui_select') and inZone and cible != null:

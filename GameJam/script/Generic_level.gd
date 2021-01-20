@@ -17,23 +17,26 @@ func fade_out(action, cible):
 	set_modulate(lerp(get_modulate(), Color(1,1,1,0), 0.3))
 	yield(get_tree().create_timer(0.5), "timeout")
 	if action == "change_scene":
-		get_tree().change_scene(cible)
+		# La variable c'est juste pour enlever un warning
+		var _warn = get_tree().change_scene(cible)
 
 
 func _ready():
+	# La variable c'est juste pour enlever un warning
+	var _warn = null
 	#connect all the node to the signal we will send
 	add_to_group("levelManager")
 	for node in get_tree().get_nodes_in_group("player")[0].get_children():
 		if node is Control:
-			self.connect("next_second", node, "_on_next_second")
+			_warn = self.connect("next_second", node, "_on_next_second")
 		
 	for node in get_tree().get_root().get_child(0).get_children(): 
 		if node.has_method("_on_time_change"):
-			self.connect("next_second", node, "_on_next_second")
-			self.connect("time_change", node, "_on_time_change")
+			_warn = self.connect("next_second", node, "_on_next_second")
+			_warn = self.connect("time_change", node, "_on_time_change")
 	
-	for node in get_tree().get_nodes_in_group("box"):
-		self.connect("time_change", node, "_on_time_change")
+#	for node in get_tree().get_nodes_in_group("box"):
+#		_warn = self.connect("time_change", node, "_on_time_change")
 		
 
 
@@ -41,7 +44,7 @@ func _init():
 	ressources = {}
 	timeArray = []
 	# one case per frame per maxTime seconde
-	for i in range(maxTime * 100 + 1):
+	for _i in range(maxTime * 100 + 1):
 		timeArray.append([])
 	
 	time = int(0.75 * time)
@@ -63,7 +66,8 @@ func _process(delta):
 			recover_actions()
 
 func game_over():
-	get_tree().change_scene("res://godot_component/scene/GameOver.tscn")
+	# La variable c'est juste pour enlever un warning
+	var _warn = get_tree().change_scene("res://godot_component/scene/GameOver.tscn")
 
 func recover_actions():
 	for elem in timeArray[int(time * 100)]:

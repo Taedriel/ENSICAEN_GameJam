@@ -6,7 +6,7 @@ var bodies
 func _ready():
 	self.contact_monitor = true
 
-func _process(delta):
+func _process(_delta):
 	cpt += 1
 	if fmod(cpt, timer) == 0:
 		self.queue_free()

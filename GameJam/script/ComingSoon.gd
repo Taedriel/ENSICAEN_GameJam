@@ -8,7 +8,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().change_scene("res://godot_component/scene/ComingSoon.tscn")
+	# La variable c'est juste pour enlever un warning
+	var _warn = get_tree().change_scene("res://godot_component/scene/ComingSoon.tscn")
 	pass # Replace with function body.
 
 

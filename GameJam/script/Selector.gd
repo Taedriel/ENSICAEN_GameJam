@@ -15,7 +15,8 @@ func _ready():
 	
 
 func _on_Button_pressed(numero):
-	get_tree().change_scene("res://godot_component/scene/Level"+numero+".tscn")
+	# La variable c'est juste pour enlever un warning
+	var _warn = get_tree().change_scene("res://godot_component/scene/Level"+numero+".tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

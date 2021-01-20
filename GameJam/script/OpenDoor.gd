@@ -6,8 +6,9 @@ var inZone = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
-	$Area2D.connect("body_exited", self, "_on_Area2D_body_exited")
+	# La variable c'est juste pour enlever un warning
+	var _warn = $Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
+	_warn = $Area2D.connect("body_exited", self, "_on_Area2D_body_exited")
 	
 	for child in get_parent().get_children():
 		if child == self:

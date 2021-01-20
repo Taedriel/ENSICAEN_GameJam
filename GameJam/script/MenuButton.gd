@@ -17,7 +17,8 @@ func _ready():
 
 
 func _on_NewGameButton_pressed():
-	get_tree().change_scene("res://godot_component/scene/Level1.tscn")
+	# La variable c'est juste pour enlever un warning
+	var _warn = get_tree().change_scene("res://godot_component/scene/Level1.tscn")
 
 
 func _on_ExitButton_pressed():
@@ -25,8 +26,10 @@ func _on_ExitButton_pressed():
 
 
 func _on_ContinueButton_pressed():
-	get_tree().change_scene("res://godot_component/scene/Selector.tscn")
+	# La variable c'est juste pour enlever un warning
+	var _warn = get_tree().change_scene("res://godot_component/scene/Selector.tscn")
 
 
 func _on_OptionButton_pressed():
-	get_tree().change_scene("res://godot_component/scene/OptionMenu.tscn")
+	# La variable c'est juste pour enlever un warning
+	var _warn = get_tree().change_scene("res://godot_component/scene/OptionMenu.tscn")

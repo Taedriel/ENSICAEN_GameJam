@@ -64,7 +64,7 @@ func get_input(delta):
 	velocity = velocity * speed
 
 
-func _process(delta):
+func _process(_delta):
 	if hp <= 0:
 		self.queue_free()
 

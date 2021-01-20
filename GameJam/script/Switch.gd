@@ -8,8 +8,10 @@ var fmontant
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
-	$Area2D.connect("body_exited", self, "_on_Area2D_body_exited")
+	# La variable c'est juste pour enlever un warning
+	var _warn = null
+	_warn = $Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
+	_warn = $Area2D.connect("body_exited", self, "_on_Area2D_body_exited")
 	
 	$Sprite.flip_h = !left
 	in_zone = false
@@ -26,7 +28,8 @@ func _input(event):
 			fmontant = false
 			
 		if finish:
-			get_tree().change_scene("res://godot_component/scene/Selector.tscn")
+			# La variable c'est juste pour enlever un warning
+			var _warn = get_tree().change_scene("res://godot_component/scene/Selector.tscn")
 		
 			
 func _on_Area2D_body_entered(body):
