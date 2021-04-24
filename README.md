@@ -17,6 +17,22 @@ Vous êtes OTTO un jeunes dinosaure qui un jour rencontre un mystérieux magicie
 
 (P.S.): le niveau 4 est bien faisable, il suffit de lire attentivement le panneau 
 
+## Screenshots
+
+Menu :
+
+![Menu](./screenshots/Menu.png)
+
+
+
+Élément de gameplay, lancer des rochers sur ses ennemis :
+
+![Gameplay1](./screenshots/gameplay-1.png)
+
+Apparition du magicien :
+
+![gameplay-2](./screenshots/gameplay-2.png)
+
 ## Credits
 
 - Arch&Type :
